@@ -1,0 +1,18 @@
+{% extends 'exort/base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block title %}Регистрация{% endblock %}
+{% block content %}
+
+<form method="post" class="raper">
+    {% csrf_token %}
+    <fieldset class="form-label">
+      {{ form|crispy }}
+  </fieldset>
+  <button type="submit" class="registerbtn">Зарегестрироваться</button>
+
+{% endblock %}
+
+
+

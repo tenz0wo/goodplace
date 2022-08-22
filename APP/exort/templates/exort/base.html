@@ -1,0 +1,51 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>{% block title %}{% endblock %}</title> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'exort/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'exort/css/food.css' %}">
+    <link rel="stylesheet" href="{% static 'exort/css/reg.css' %}">
+    <link rel="stylesheet" href="{% static 'exort/css/login.css' %}">
+
+</head>
+<body>
+    <nav class="py-2 bg-light border-bottom">
+        <div class="container d-flex flex-wrap">
+          <ul class="nav me-auto">
+            <li class="nav-item"><a href="/" class="nav-link link-dark px-2 active" aria-current="page">Главная</a></li>
+            <li class="nav-item"><a href="/place" class="nav-link link-dark px-2">Места</a></li>
+            <li class="nav-item"><a href="/food" class="nav-link link-dark px-2">Еда</a></li>
+          </ul>
+          <ul class="nav">
+            {% if user.is_authenticated %}
+            <li class="nav-item"><a href="{% url 'profile' %}" class="nav-link link-dark px-2">Профиль</a></li>
+            <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link link-dark px-2">Выход</a></li>
+            {% else %}
+            <li class="nav-item"><a href="{% url 'login' %}" class="nav-link link-dark px-2">Вход</a></li>
+            <li class="nav-item"><a href="{% url 'register' %}" class="nav-link link-dark px-2">Регистрация</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </nav>
+      
+    {% block content %}
+    {% if messages %}
+        	{% for message in messages %}
+          	<div class="alert alert-{{ message.tags }}">
+            	{{ message }}
+          	</div>
+        	{% endfor %}
+    {% endif %}
+    {% endblock %}
+    {% if user.is_authenticated %}
+    <div>    
+        <a href="/create_card"><button class="btn">Создать карточку</button></a>
+     </div>
+    {% endif %}
+</body>

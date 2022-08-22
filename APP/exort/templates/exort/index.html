@@ -1,0 +1,23 @@
+{% extends 'exort/base.html' %}
+ 
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+    <div class="wrapper">
+        <div class="pop">Популярное</div>
+        <div></div>
+        {% for el in cards %}
+          <div class="card mb-3">
+            <a href="{{ el.link }}" style="text-decoration: none; color: black;">
+              <img src="{{ el.image }}" class="card-img-top">
+              <div class="card-body">
+              <h5 class="card-title">{{ el.title }}</h5>
+              <p class="card-text">{{ el.description }}</p>
+              </a>
+              <!-- <img class="rounded-circle" src="{{ el.author.profile.image.url }}"> -->
+              <p class="card-text"><small class="text-muted">{{ el.city }}</small></p>
+            </div>
+          </div>
+        {% endfor %}
+{% endblock %}
+

@@ -1,0 +1,22 @@
+{% extends 'exort/base.html' %}
+
+{% block title %}Еда{% endblock %}
+
+{% block content %}
+    <div class="raper">
+        <div class="pop">Последнее</div>
+        <div></div>
+        {% for el in cards %}
+        {% if el.category == 'Еда' %}
+          <div class="card mb-3">
+            <a href="{{ el.link }}" style="text-decoration: none; color: black;"><img src="{{ el.image }}" class="card-img-top">
+              <div class="card-body">
+              <h5 class="card-title">{{ el.title }}</h5>
+              <p class="card-text">{{ el.description }}</p>
+              </a>
+              <p class="card-text"><small class="text-muted">{{ el.city }}</small></p>
+            </div>
+          </div>
+          {% endif %}
+        {% endfor %}
+{% endblock %}

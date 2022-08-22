@@ -1,0 +1,23 @@
+{% extends 'exort/base.html' %}
+
+{% block title %}Создание карточки{% endblock %}
+
+{% block content %}
+    <div class="raper">
+        <h1>Форма создания карточки</h1><br>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.title }}<br>
+            {{ form.category }}<br>
+            {{ form.description }}<br>
+            {{ form.city }}<br>
+            {{ form.link }}<br>
+            {{ form.image }}<br>
+            <span>{{ error }}</span>
+            <button type="submit" class="registerbtn">Добавить карточку</button>
+
+            
+        </form>
+    </div>
+   
+{% endblock %}
