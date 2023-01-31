@@ -24,7 +24,7 @@
           </ul>
           <ul class="nav">
             {% if user.is_authenticated %}
-            <li class="nav-item"><a href="{% url 'profile' %}" class="nav-link link-dark px-2">Профиль</a></li>
+            <li class="nav-item"><a href="{% url 'profile' %}" class="nav-link link-dark px-2">Вы вошли под пользователем {{ us }}</a></li>
             <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link link-dark px-2">Выход</a></li>
             {% else %}
             <li class="nav-item"><a href="{% url 'login' %}" class="nav-link link-dark px-2">Вход</a></li>
@@ -48,4 +48,5 @@
         <a href="/create_card"><button class="btn">Создать карточку</button></a>
      </div>
     {% endif %}
-</body>
+
+  </body>

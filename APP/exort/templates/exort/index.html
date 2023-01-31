@@ -7,6 +7,7 @@
         <div class="pop">Популярное</div>
         <div></div>
         {% for el in cards %}
+          {% for i in res %}
           <div class="card mb-3">
             <a href="{{ el.link }}" style="text-decoration: none; color: black;">
               <img src="{{ el.image }}" class="card-img-top">
@@ -14,10 +15,13 @@
               <h5 class="card-title">{{ el.title }}</h5>
               <p class="card-text">{{ el.description }}</p>
               </a>
+              <p class="card-text">Средняя стоимость за 5-ых человек:<br>{{ i }}</p>
               <!-- <img class="rounded-circle" src="{{ el.author.profile.image.url }}"> -->
               <p class="card-text"><small class="text-muted">{{ el.city }}</small></p>
             </div>
           </div>
         {% endfor %}
+        {% endfor %}
+
 {% endblock %}
 

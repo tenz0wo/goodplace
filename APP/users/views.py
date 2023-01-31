@@ -45,6 +45,8 @@ def user_login(request):
     return render(request, 'users/login.html', context)
 
 def profile(request):
+    us = request.user
+
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST, instance=request.user)
         p_form = ProfileUpdateForm(request.POST,
@@ -62,7 +64,8 @@ def profile(request):
 
     context = {
         'u_form': u_form,
-        'p_form': p_form
+        'p_form': p_form,
+        'us': us
     }
 
     return render(request, 'users/profile.html', context)
