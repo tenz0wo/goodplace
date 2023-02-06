@@ -9,7 +9,6 @@ urlpatterns = [
     path('', include('exort.urls')),
     path('register/', user_views.register, name='register'),
     path('users/', include('users.urls')),
-
 ]
 
 if settings.DEBUG is True:

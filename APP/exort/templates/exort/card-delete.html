@@ -1,0 +1,17 @@
+{% extends 'exort/base.html' %}
+
+{% block title %}Удаление карточки{% endblock %}
+
+{% block content %}
+    <div class="raper">
+        <h1>Удаление карточки</h1><br>
+        <form method="post">
+            {% csrf_token %}
+
+            <button type="submit" class="registerbtn">Удалить карточку</button>
+
+            
+        </form>
+    </div>
+   
+{% endblock %}

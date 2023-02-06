@@ -13,6 +13,10 @@
     <link rel="stylesheet" href="{% static 'exort/css/reg.css' %}">
     <link rel="stylesheet" href="{% static 'exort/css/login.css' %}">
 
+    <style type="text/css">    
+           #left { position: absolute; left: 0; top: 0; width: 50%; }
+           #right { position: absolute; right: 0; top: 0; width: 50%; } 
+    </style>
 </head>
 <body>
     <nav class="py-2 bg-light border-bottom">
@@ -35,18 +39,14 @@
       </nav>
       
     {% block content %}
-    {% if messages %}
-        	{% for message in messages %}
-          	<div class="alert alert-{{ message.tags }}">
-            	{{ message }}
-          	</div>
-        	{% endfor %}
-    {% endif %}
+
     {% endblock %}
+
     {% if user.is_authenticated %}
     <div>    
         <a href="/create_card"><button class="btn">Создать карточку</button></a>
      </div>
     {% endif %}
+    <script src="{% static 'exort/js/script.js' %}"></script>
 
   </body>

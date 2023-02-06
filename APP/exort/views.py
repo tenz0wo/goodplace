@@ -1,16 +1,31 @@
 from django.shortcuts import redirect, render
-from .forms import CardsForm
+from django.views.generic import DeleteView, UpdateView
+from .forms import CardsForm, RatingForm
 from .models import Cards
 
+
+class PostUpdateView(UpdateView):
+    model = Cards
+    template_name = 'exort/create_card.html' 
+    form_class = CardsForm
+
+class PostDeleteView(DeleteView):
+    model = Cards
+    template_name = 'exort/card-delete.html' 
+    success_url = '/'
 
 def index(request):
     us = request.user
     cards = Cards.objects.all()
-    res = []
-    for i in cards:
-        t = i.coo
-        res.append(int(t * 5))
-    return render(request, 'exort/index.html', {"cards": cards, "us": us, "res": res})
+    post_count = Cards.objects.count()
+
+    star_form = RatingForm()
+    data = {"cards": cards, 
+            "us": us,
+            "star_form": star_form,
+            'post_count': post_count
+            }
+    return render(request, 'exort/cards_list.html', data)
 
 def food(request):
     us = request.user

@@ -1,5 +1,4 @@
-from dataclasses import fields
-from .models import Cards
+from .models import Cards, RatingStar, Rating
 from django.forms import ModelForm, TextInput, Textarea, Select, URLInput
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
@@ -47,3 +46,12 @@ class CreateUserForm(UserCreationForm):
         model = User
         fields = ['username', 'password1', 'password2']
 
+
+class RatingForm(forms.ModelForm):
+    star = forms.ModelChoiceField(
+        queryset=RatingStar.objects.all(), widget=forms.RadioSelect(), empty_label=None
+    )
+
+    class Meta:
+        model = Rating
+        fields = ("star",)

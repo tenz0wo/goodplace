@@ -68,6 +68,107 @@ body {
 
 
 
-/* ///////////// */
+.rating {
+    overflow: hidden;
+    vertical-align: bottom;
+    display: inline-block;
+    width: 155px;
+    height: 30px;
+  }
+  
+.rating > input {
+opacity: 0;
+margin-right: -100%;
+}
 
+.rating > label {
+position: relative;
+display: block;
+float: right;
+background: url('../images/star-off-big.png');
+background-size: 30px 30px;
+}
+
+.rating > label:before {
+display: block;
+opacity: 0;
+width: 30px;
+height: 30px;
+background: url('../images/star-on-big.png');
+background-size: 30px 30px;
+transition: opacity 0.2s linear;
+}
+  
+.rating > label:hover:before,  .rating > label:hover ~ label:before,  .rating:not(:hover) > :checked ~ label:before { opacity: 1; }
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+nav ul {
+    float: right;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    position: relative;
+}
+
+
+nav ul li {
+    display: inline-block;
+}
+
+nav ul ul {
+    display: none;
+    position: absolute;
+    /* has to be the same number as the "line-height" of "nav a" */
+    top: 30px;
+    background: #fff;
+    padding: 10px;
+}
+
+/* Display Dropdowns on Hover */
+
+nav ul li:hover > ul {
+    display: inherit;
+}
+
+/* Fisrt Tier Dropdown */
+
+nav ul ul li {
+    width: 170px;
+    float: none;
+    display: list-item;
+    position: relative;
+    margin: 0;
+}
+
+nav ul ul li a {
+    color: #333;
+    padding: 5px 10px;
+    display: block;
+}
+
+/* Second, Third and more Tiers	
+ * We move the 2nd and 3rd etc tier dropdowns to the left
+ * by the amount of the width of the first tier.
+*/
+
+nav ul ul ul li {
+    position: relative;
+    top: -60px;
+    /* has to be the same number as the "width" of "nav ul ul li" */
+    left: 170px;
+}
+
+
+.count{
+    text-align:right;
+    margin: 0px 400px 0px 0px;
+}
+
+.adp{
+    margin-right: 300px;
+}
 

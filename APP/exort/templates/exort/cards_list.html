@@ -3,11 +3,14 @@
 {% block title %}Главная{% endblock %}
 
 {% block content %}
+
     <div class="wrapper">
-        <div class="pop">Популярное</div>
-        <div></div>
+      <div class="container d-flex flex-wrap pop">
+        <span>Популярное</span>
+        <span id="right" class="text-muted">Показано постов: {{ post_count }}</span>
+      </div>
+      <div></div>
         {% for el in cards %}
-          {% for i in res %}
           <div class="card mb-3">
             <a href="{{ el.link }}" style="text-decoration: none; color: black;">
               <img src="{{ el.image }}" class="card-img-top">
@@ -15,13 +18,14 @@
               <h5 class="card-title">{{ el.title }}</h5>
               <p class="card-text">{{ el.description }}</p>
               </a>
-              <p class="card-text">Средняя стоимость за 5-ых человек:<br>{{ i }}</p>
-              <!-- <img class="rounded-circle" src="{{ el.author.profile.image.url }}"> -->
               <p class="card-text"><small class="text-muted">{{ el.city }}</small></p>
-            </div>
-          </div>
-        {% endfor %}
-        {% endfor %}
+              {% if el.owner == us %}
+              <a href="{% url 'post-delete' el.id %}" class=" btn-danger">Удалить</a>
+              <a href="{% url 'post-update' el.id %}" class=" btn-danger">Обновить карточку</a>
+              {% endif %}
 
+            </div>
+       </div>
+        {% endfor %}
 {% endblock %}
 
