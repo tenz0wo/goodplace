@@ -19,10 +19,16 @@
               <p class="card-text">{{ el.description }}</p>
               </a>
               <p class="card-text"><small class="text-muted">{{ el.city }}</small></p>
-              {% if el.owner == us %}
+              {% if el.owner == user %}
               <a href="{% url 'post-delete' el.id %}" class=" btn-danger">Удалить</a>
               <a href="{% url 'post-update' el.id %}" class=" btn-danger">Обновить карточку</a>
               {% endif %}
+              {% if user.is_superuser == 1 or user.is_staff == 1%}
+              <a href="{% url 'post-delete' el.id %}" class=" btn-danger">Удалить</a>
+              <a href="{% url 'post-update' el.id %}" class=" btn-danger">Обновить карточку</a>
+              {% endif %}
+          
+
 
             </div>
        </div>
